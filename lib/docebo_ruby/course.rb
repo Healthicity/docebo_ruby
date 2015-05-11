@@ -9,6 +9,10 @@ module DoceboRuby
         end
         courses.map { |key, value| Course.new value['course_info']  }
       end
+
+      def add_user_subscription(attributes)
+        fetch_data('addUserSubscription', attributes)
+      end
     end
   end
 end

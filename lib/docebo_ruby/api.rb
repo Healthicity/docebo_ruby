@@ -19,25 +19,29 @@ module DoceboRuby
 
       RestClient.post(url, params, options) do |raw_response|
         case raw_response.code
-        when 200
-          response = parse_response raw_response
-          if block_given?
-            yield response 
+          when 404
+            raise NotFound.new(response)
+          when 500
+            raise RequestError.new(response)
           else
-            return response
-          end
-        when 404
-          raise NotFound.new(response)
-        else
-          raise RequestError.new(response)
-        end        
+            response = parse_response raw_response
+            if block_given?
+              yield response
+            else
+              return response
+            end
+        end
       end
     end
 
     protected
 
     def parse_response(raw_response)
-      JSON.parse(raw_response)
+      if raw_response.present?
+        JSON.parse(raw_response)
+      else
+        { 'code' => raw_response.code }
+      end
     end
 
     def rest_url(api, method)
