@@ -11,6 +11,10 @@ module DoceboRuby
         fetch_data('checkUsername', {userid: username})
       end
 
+      def get_token(username)
+        fetch_data('getToken', { username: username })
+      end
+
       def authenticate(username, password)
         fetch_data('authenticate', {password: password, username: username}) do |response|
           response['id_user'] || false
