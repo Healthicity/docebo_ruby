@@ -19,7 +19,7 @@ module DoceboRuby
       end
 
       def get_children(id_org)
-        fetch_data('getParentNode', { id_org: id_org })
+        fetch_data('getChildren', { id_org: id_org })
       end
 
       def get_parent_node(id_org)
