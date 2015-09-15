@@ -21,10 +21,10 @@ module DoceboRuby
         end
       end
 
-      def sso_url(username)
+      def sso_url(username, options = {})
         timestamp = Time.now.to_i
         token = Digest::MD5.hexdigest([username, timestamp, DoceboRuby.config.sso_token].join(','))
-        "http://#{DoceboRuby.config.saas_url}/doceboLms/index.php?auth_regen=1&modname=login&op=confirm&login_user=#{username}&time=#{timestamp}&token=#{token}"
+        "http://#{DoceboRuby.config.saas_url}/doceboLms/index.php?auth_regen=1&modname=login&op=confirm&login_user=#{username}&time=#{timestamp}&token=#{token}&course=#{options[:course]}&destination=#{options[:destination]}"
       end
     end
   end
