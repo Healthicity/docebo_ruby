@@ -3,12 +3,12 @@ module DoceboRuby
     self.api = 'enroll'
 
     class << self
-      def enrollments
-        fetch_data('enrollments')
+      def enrollments(options = {})
+        fetch_data('enrollments', options)
       end
 
-      def count
-        fetch_data('count')
+      def count(options = {})
+        fetch_data('count', options)
       end
     end
   end
