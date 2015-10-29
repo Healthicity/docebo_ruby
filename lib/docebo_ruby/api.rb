@@ -20,9 +20,9 @@ module DoceboRuby
       RestClient.post(url, params, options) do |raw_response|
         case raw_response.code
           when 404
-            raise NotFound.new(response)
+            raise NotFound.new(raw_response)
           when 500
-            raise RequestError.new(response)
+            raise RequestError.new({url: url, method: method, params: params, raw_response: raw_response}.to_s)
           else
             response = parse_response raw_response
             if block_given?
