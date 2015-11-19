@@ -29,6 +29,10 @@ module DoceboRuby
       def get_node_info(id_org)
         fetch_data('getNodeInfo', { id_org: id_org })
       end
+
+      def assign_users_to_node(options)
+        fetch_data('assignUsersToNode', { id_org: options[:id_org], user_ids: options[:user_ids] })
+      end
     end
   end
 end
