@@ -7,6 +7,10 @@ module DoceboRuby
         fetch_data('create', attributes)
       end
 
+      def edit(attributes = {})
+        fetch_data('edit', attributes)
+      end
+
       def check_username(username)
         fetch_data('checkUsername', {userid: username})
       end
