@@ -33,6 +33,14 @@ module DoceboRuby
       def assign_users_to_node(options)
         fetch_data('assignUsersToNode', { id_org: options[:id_org], user_ids: options[:user_ids] })
       end
+
+      def stats(options)
+        fetch_data('stats', { id_org: options[:id_org],
+                              code: options[:code],
+                              include_descendants: options[:include_descendants],
+                              from: options[:from],
+                               count: options[:count] })
+      end
     end
   end
 end
