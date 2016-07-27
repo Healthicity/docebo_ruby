@@ -1,6 +1,9 @@
 DoceboRuby - Ruby wrapper for Decobo LMS API
 ============================
 
+### Original Author
+Cẩm Huỳnh, https://github.com/huynhquancam/docebo_ruby
+
 ### Installation
 
 ```sh
